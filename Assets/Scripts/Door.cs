@@ -7,6 +7,7 @@ public class door : MonoBehaviour
     public GameObject intText;
     public bool interactable, toggle;
     public Animator doorAnim;
+    public float doorOpenTime = 1f;
 
     void OnTriggerStay(Collider other)
     {
@@ -30,6 +31,9 @@ public class door : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                StartCoroutine(openDoor());
+                /*
+                
                 toggle = !toggle;
                 if (toggle == true)
                 {
@@ -43,8 +47,24 @@ public class door : MonoBehaviour
                 }
                 intText.SetActive(false);
                 interactable = false;
+                */
             }
         }
+    }
+
+    IEnumerator openDoor()
+    {
+        //opening door
+        doorAnim.SetBool("openDoor", true);
+        intText.SetActive(false);
+        interactable = false;
+
+
+        yield return new WaitForSeconds(doorOpenTime);
+        doorAnim.SetBool("openDoor", false);
+        intText.SetActive(true);
+        interactable = true;
+
     }
 }
 
