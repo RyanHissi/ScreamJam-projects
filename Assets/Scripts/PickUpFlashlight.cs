@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pickupFlashlight : MonoBehaviour
+public class PickupFlashlight : MonoBehaviour
 {
     public GameObject inttext, flashlight_table, flashlight_hand;
     public AudioSource pickup;
