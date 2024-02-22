@@ -27,6 +27,7 @@ public class UseFlashlight : MonoBehaviour
     {
         batteryAmount = batteryMax;
         batterySlider.maxValue = batteryMax;
+        canTurnOn = true;
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class UseFlashlight : MonoBehaviour
     {
         if(batteryAmount <= 0)
         {
+            Debug.Log("battery empty");
             lightObj.SetActive(false);
             lightOn = false;
             Zombie.frozen = false;
@@ -48,6 +50,7 @@ public class UseFlashlight : MonoBehaviour
         //light on
         if (Input.GetMouseButtonDown(0) && batteryAmount >= 0 && canTurnOn)
         {
+            Debug.Log("using flashlight");
 
             lightObj.SetActive(true);
             lightOn = true;

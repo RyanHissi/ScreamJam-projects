@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public int screensTurned = 0;
     public int winScene;
+    public bool seenIntro;
 
     private void Update()
     {

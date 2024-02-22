@@ -38,7 +38,7 @@ public class interact : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                dialogueText.text = dialogueString;
+                //dialogueText.text = dialogueString;
                 dialogue.SetActive(true);
                 inttext.SetActive(false);
                 StartCoroutine(DisableDialogue());
