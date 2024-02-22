@@ -86,8 +86,6 @@ public class door : MonoBehaviour
 
         transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 1f).SetEase(Ease.OutBounce);
 
-
-        intText.SetActive(true);
         //interactable = true;
         yield return new WaitForSeconds(1);
 
