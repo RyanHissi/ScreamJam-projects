@@ -8,6 +8,10 @@ public class Flashlight : MonoBehaviour
     public bool toggle;
     public AudioSource toggleSound;
 
+    public int batteryMax = 100;
+    public int batteryAmount;
+
+
     void Start()
     {
         if (toggle == false)
@@ -22,8 +26,12 @@ public class Flashlight : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(0))
         {
+
+            light.SetActive(true);
+
+            /*
             toggle = !toggle;
             //toggleSound.Play();
             if (toggle == false)
@@ -34,6 +42,16 @@ public class Flashlight : MonoBehaviour
             {
                 light.SetActive(true);
             }
+            */
         }
+
+        if(Input.GetMouseButtonUp(1))
+        {
+            light.SetActive(false);
+
+        }
+
+            
     }
+   
 }

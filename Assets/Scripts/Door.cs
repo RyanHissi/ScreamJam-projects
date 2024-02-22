@@ -8,6 +8,7 @@ public class door : MonoBehaviour
     public bool interactable, toggle;
     public Animator doorAnim;
     public float doorOpenTime = 1f;
+    public BoxCollider doorCollider;
 
     void OnTriggerStay(Collider other)
     {
@@ -58,12 +59,17 @@ public class door : MonoBehaviour
         doorAnim.SetBool("openDoor", true);
         intText.SetActive(false);
         interactable = false;
+        doorCollider.enabled = false;
 
 
         yield return new WaitForSeconds(doorOpenTime);
         doorAnim.SetBool("openDoor", false);
         intText.SetActive(true);
         interactable = true;
+        yield return new WaitForSeconds(1);
+
+        doorCollider.enabled = true;
+
 
     }
 }

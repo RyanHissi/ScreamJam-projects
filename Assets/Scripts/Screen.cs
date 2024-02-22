@@ -6,7 +6,15 @@ public class Screen : MonoBehaviour
 {
     public GameObject intText;
     public bool interactable, toggle;
-    public Animator ScreenAnim;
+   // public Animator ScreenAnim;
+
+    public GameObject TVOn;
+    public GameObject TVOff;
+
+    private void Start()
+    {
+        GameManager.instance.screensTurned = 0;
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -30,6 +38,12 @@ public class Screen : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                TVOff.SetActive(true);
+                TVOn.SetActive(false);
+                GameManager.instance.screensTurned++;
+
+
+                /*
                 toggle = !toggle;
                 if (toggle == true)
                 {
@@ -43,6 +57,8 @@ public class Screen : MonoBehaviour
                 }
                 intText.SetActive(false);
                 interactable = false;
+
+                */
             }
         }
     }

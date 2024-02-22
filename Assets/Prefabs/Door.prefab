@@ -108,6 +108,7 @@ MonoBehaviour:
   toggle: 1
   doorAnim: {fileID: 3306653800293211351}
   doorOpenTime: 2
+  doorCollider: {fileID: 4368710782622835846}
 --- !u!65 &5346995644461989632
 BoxCollider:
   m_ObjectHideFlags: 0
