@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor.Rendering;
 
 public class textShow : MonoBehaviour
 {
@@ -29,7 +28,16 @@ public class textShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space)) 
+        {
+            skipIntro();
+        }
+    }
+
+    void skipIntro()
+    {
+        BGM.Play();
+        this.gameObject.SetActive(false);
     }
 
     IEnumerator introText()

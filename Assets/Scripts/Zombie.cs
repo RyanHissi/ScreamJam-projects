@@ -14,18 +14,19 @@ public class obunga : MonoBehaviour
 
 
     public bool frozen;
+    bool held;
 
     public GameObject jumpScare;
 
 
     private void Start()
     {
-        frozen = true;
+        held = true;
         StartCoroutine(startHold());
     }
     void Update()
     {
-        if (frozen)
+        if (frozen || held)
         {
             ai.destination = this.gameObject.transform.position;
             anim.SetBool("Frozen", true);
@@ -66,8 +67,9 @@ public class obunga : MonoBehaviour
 
     IEnumerator startHold()
     {
-        yield return new WaitForSeconds(25);
-        frozen = false;
+        yield return new WaitForSeconds(20);
+        Debug.Log("Zombie active");
+        held = false;
     }
 
 }
