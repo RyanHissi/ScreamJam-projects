@@ -10,10 +10,12 @@ public class Screen : MonoBehaviour
 
     public GameObject TVOn;
     public GameObject TVOff;
+    public AudioSource offSound;
 
     private void Start()
     {
         GameManager.instance.screensTurned = 0;
+        offSound = GetComponent<AudioSource>();
     }
 
     void OnTriggerStay(Collider other)
@@ -38,6 +40,7 @@ public class Screen : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                offSound.Play();
                 TVOff.SetActive(true);
                 TVOn.SetActive(false);
                 GameManager.instance.screensTurned++;

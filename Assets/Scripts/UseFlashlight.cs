@@ -16,7 +16,7 @@ public class UseFlashlight : MonoBehaviour
     public GameObject lightObj;
     bool lightOn;
     bool canTurnOn;
-
+    public AudioSource offSound;
     public obunga Zombie;
 
 
@@ -68,6 +68,7 @@ public class UseFlashlight : MonoBehaviour
             lightObj.SetActive(false);
             lightOn = false;
             Zombie.frozen = false;
+            offSound.Play();
 
 
         }

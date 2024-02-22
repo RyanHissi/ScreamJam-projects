@@ -49,7 +49,7 @@ public class obunga : MonoBehaviour
             gameObject.transform.position = new Vector3(100,100,100);
 
             jumpScare.SetActive(true);
-            jumpScare.transform.DOLocalMoveY(-2.76f, .3f);
+            jumpScare.transform.DOLocalMoveY(-2.67f, .3f);
 
             Animator anim = jumpScare.GetComponent<Animator>();
             anim.SetTrigger("Jumpscare");

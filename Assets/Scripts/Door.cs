@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class door : MonoBehaviour
 {
     public GameObject intText;
     public bool interactable, toggle;
-    public Animator doorAnim;
+    //public Animator doorAnim;
     public float doorOpenTime = 1f;
     public BoxCollider doorCollider;
+    public AudioSource aud;
 
+    public GameObject doorTarget;
+
+
+
+    private void Start()
+    {
+        aud = GetComponent<AudioSource>();
+    }
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MainCamera"))
@@ -28,6 +38,8 @@ public class door : MonoBehaviour
     }
     void Update()
     {
+        //Debug.Log(transform.parent);
+
         if (interactable == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -55,17 +67,28 @@ public class door : MonoBehaviour
 
     IEnumerator openDoor()
     {
-        //opening door
-        doorAnim.SetBool("openDoor", true);
+        Debug.Log(transform.parent);
+
+        //opening door -  this should be a tween
+       // doorAnim.SetBool("openDoor", true);
+        aud.Play();
+        transform.DOLocalRotate(new Vector3(0, 90, 0), 1f).SetEase(Ease.OutBounce);
+
+
+        
         intText.SetActive(false);
         interactable = false;
         doorCollider.enabled = false;
 
 
         yield return new WaitForSeconds(doorOpenTime);
-        doorAnim.SetBool("openDoor", false);
+        //doorAnim.SetBool("openDoor", false);
+
+        transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 1f).SetEase(Ease.OutBounce);
+
+
         intText.SetActive(true);
-        interactable = true;
+        //interactable = true;
         yield return new WaitForSeconds(1);
 
         doorCollider.enabled = true;
